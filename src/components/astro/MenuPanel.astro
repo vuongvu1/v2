@@ -1,0 +1,124 @@
+---
+import { NAV } from "../../data/menu";
+import { menuBounce } from "../../lib/transitions";
+import AnimatedLogo from "./AnimatedLogo.astro";
+
+interface Props {
+  pathname: string;
+}
+const { pathname } = Astro.props;
+
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<nav
+  class="menu-panel pixel-panel"
+  transition:name="menu"
+  transition:animate={menuBounce}
+  aria-label="Main menu"
+>
+  <a class="brand" href="/">
+    <AnimatedLogo />
+    <span class="brand-name pixel-ui">VUONG VU</span>
+    <span class="brand-sub">// Frontend Engineer</span>
+  </a>
+
+  <hr class="pixel-divider" />
+
+  <ul class="menu-list">
+    {
+      NAV.map((item) => (
+        <li>
+          <a
+            class:list={["pixel-btn", "menu-item", { active: isActive(item.href) }]}
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            <span class="menu-label">{item.label}</span>
+            <span class="menu-flavor">{item.flavor}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .menu-panel {
+    position: sticky;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    padding: 4px 0 2px;
+  }
+  .brand:hover {
+    text-decoration: none;
+  }
+  .brand-name {
+    font-size: 16px;
+    color: var(--c-gold);
+    letter-spacing: 1px;
+  }
+  .brand-sub {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--c-paper);
+    opacity: 0.7;
+  }
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .menu-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+  .menu-item:hover {
+    text-decoration: none;
+  }
+  .menu-label {
+    font-family: var(--font-ui);
+    font-size: 12px;
+  }
+  .menu-flavor {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--c-gold);
+    opacity: 0.65;
+  }
+  .menu-item.active {
+    color: var(--c-gold);
+  }
+  .menu-item.active .menu-label::before {
+    content: "\25B6 ";
+  }
+  .menu-item.active .menu-flavor {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 820px) {
+    .menu-panel {
+      position: static;
+    }
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+  }
+</style>

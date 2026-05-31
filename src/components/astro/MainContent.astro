@@ -1,0 +1,44 @@
+---
+import { contentBounce } from "../../lib/transitions";
+
+interface Props {
+  title: string;
+  flavor?: string;
+}
+const { title, flavor } = Astro.props;
+---
+
+<main
+  class="main-content"
+  transition:name="content"
+  transition:animate={contentBounce}
+  aria-label={title}
+>
+  <header class="content-head">
+    <h1>{title}</h1>
+    {flavor && <p class="flavor">{flavor}</p>}
+  </header>
+  <div class="content-body">
+    <slot />
+  </div>
+</main>
+
+<style>
+  .main-content {
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .content-head {
+    margin-bottom: 16px;
+  }
+  .content-head h1 {
+    margin-bottom: 6px;
+  }
+  .content-head .flavor {
+    margin: 0;
+  }
+  .content-body {
+    flex: 1;
+  }
+</style>

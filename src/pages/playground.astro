@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainContent from "../components/astro/MainContent.astro";
+import Playground from "../components/react/Playground.tsx";
+import "../styles/playground.css";
+---
+
+<BaseLayout title="Vuong Vu — Playground">
+  <MainContent title="Playground" flavor="The Tavern">
+    <p class="desktop-note">⌨ Best enjoyed on a desktop — Snake also takes touch controls.</p>
+    <Playground client:load />
+  </MainContent>
+</BaseLayout>

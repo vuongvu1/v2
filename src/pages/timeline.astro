@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainContent from "../components/astro/MainContent.astro";
+import { timeline } from "../data/timeline";
+---
+
+<BaseLayout title="Vuong Vu — Timeline">
+  <MainContent title="Timeline" flavor="Chronicle">
+    <ol class="timeline">
+      {
+        timeline.map((e) => (
+          <li class="entry">
+            <div class="date pixel-ui">{e.date}</div>
+            <span class="marker" aria-hidden="true" />
+            <p class="desc">
+              {e.lead}
+              <a href={e.orgUrl} target="_blank" rel="noreferrer" data-sfx="click">
+                {e.org}
+              </a>
+              {e.tail}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </MainContent>
+</BaseLayout>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .entry {
+    display: grid;
+    grid-template-columns: 92px 18px 1fr;
+    align-items: start;
+    gap: 14px;
+    padding-bottom: 22px;
+  }
+  .date {
+    font-size: 11px;
+    color: var(--c-gold);
+    text-align: right;
+    padding-top: 12px;
+    line-height: 1.4;
+  }
+  .marker {
+    width: 12px;
+    height: 12px;
+    margin-top: 14px;
+    background: var(--c-gold);
+    box-shadow: inset 2px 2px 0 var(--c-gold-dk), inset -2px -2px 0 var(--c-gold-dk);
+  }
+  .desc {
+    background: var(--c-parchment);
+    color: var(--c-ink);
+    font-size: 19px;
+    padding: 12px 16px;
+    margin: 0;
+    max-width: none;
+    box-shadow:
+      0 0 0 var(--pixel) var(--c-parchment-dk),
+      5px 5px 0 0 var(--c-stone-dk);
+  }
+  .desc a {
+    color: var(--c-green-dk);
+    font-weight: bold;
+  }
+  .desc a:hover {
+    color: var(--c-pink);
+  }
+  @media (max-width: 560px) {
+    .entry {
+      grid-template-columns: 70px 14px 1fr;
+      gap: 10px;
+    }
+    .date {
+      font-size: 10px;
+    }
+  }
+</style>

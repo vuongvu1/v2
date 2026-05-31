@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainContent from "../components/astro/MainContent.astro";
+import { contacts } from "../data/contacts";
+---
+
+<BaseLayout title="Vuong Vu — Contact">
+  <MainContent title="Contact" flavor="Allies">
+    <p class="intro">Pick a channel, traveler.</p>
+    <ul class="links">
+      {
+        contacts.map((c) => (
+          <li>
+            <a
+              class="pixel-btn contact-link"
+              href={c.address}
+              target="_blank"
+              rel="noreferrer"
+              data-sfx="click"
+            >
+              <span class="g" aria-hidden="true">
+                {c.glyph}
+              </span>
+              <span class="n">{c.name}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </MainContent>
+</BaseLayout>
+
+<style>
+  .intro {
+    font-size: 20px;
+    color: var(--c-paper);
+    opacity: 0.85;
+    margin-bottom: 18px;
+  }
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 420px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+  }
+  .contact-link .g {
+    font-size: 20px;
+  }
+  .contact-link .n {
+    font-size: 12px;
+  }
+</style>

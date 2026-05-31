@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainContent from "../components/astro/MainContent.astro";
+import Hobbies from "../components/react/Hobbies.tsx";
+import "../styles/playground.css";
+---
+
+<BaseLayout title="Vuong Vu — Hobbies">
+  <MainContent title="Hobbies" flavor="Pastimes">
+    <p class="desktop-note">A little piano and video editing on the side.</p>
+    <Hobbies client:load />
+  </MainContent>
+</BaseLayout>

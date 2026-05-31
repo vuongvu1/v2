@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainContent from "../components/astro/MainContent.astro";
+import { projects, statusLabel } from "../data/projects";
+---
+
+<BaseLayout title="Vuong Vu — Projects">
+  <MainContent title="Projects" flavor="Campaigns">
+    <div class="grid">
+      {
+        projects.map((p) => (
+          <article class="pixel-card">
+            <div class="card-top">
+              <h3>{p.title}</h3>
+              <span class:list={["pixel-tag", `pixel-tag--${p.status}`]}>
+                {statusLabel(p.status)}
+              </span>
+            </div>
+            <p>{p.desc}</p>
+            <div class="stack">
+              {p.stack.map((s) => (
+                <span class="pixel-tag">{s}</span>
+              ))}
+            </div>
+            <div class="links">
+              {p.link && (
+                <a href={p.link} target="_blank" rel="noreferrer" data-sfx="click">
+                  &rarr; Visit
+                </a>
+              )}
+              {p.github && (
+                <a href={p.github} target="_blank" rel="noreferrer" data-sfx="click">
+                  &rarr; GitHub
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </MainContent>
+</BaseLayout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .card-top h3 {
+    color: var(--c-green-dk);
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+    text-shadow: none;
+  }
+  .pixel-card p {
+    font-size: 19px;
+    margin: 8px 0 12px;
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .links {
+    display: flex;
+    gap: 16px;
+    font-family: var(--font-body);
+    font-size: 19px;
+  }
+</style>

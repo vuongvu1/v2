@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainContent from "../components/astro/MainContent.astro";
+import { skills } from "../data/skills";
+---
+
+<BaseLayout title="Vuong Vu — Skills">
+  <MainContent title="Skills" flavor="Arsenal">
+    <div class="groups">
+      {
+        skills.map((g) => (
+          <section class="group pixel-panel">
+            <h2>{g.title}</h2>
+            <div class="tags">
+              {g.items.map((it) => (
+                <span class="pixel-tag">{it}</span>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </MainContent>
+</BaseLayout>
+
+<style>
+  .groups {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .group h2 {
+    font-size: 14px;
+    color: var(--c-gold);
+    margin: 0 0 14px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tags .pixel-tag {
+    font-size: 18px;
+    padding: 4px 12px;
+  }
+</style>

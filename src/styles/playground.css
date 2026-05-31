@@ -1,0 +1,249 @@
+/* =========================================================================
+   Styles for the interactive islands (Playground + Hobbies).
+   Imported globally by playground.astro and hobbies.astro.
+   ========================================================================= */
+
+.desktop-note {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--c-gold);
+  opacity: 0.8;
+  margin-bottom: 14px;
+}
+
+/* ---- Tabs ---- */
+.pg-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.pg-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pg-tab {
+  font-size: 11px;
+}
+.pg-tab.active {
+  color: var(--c-gold);
+  box-shadow:
+    inset var(--pixel) var(--pixel) 0 0 var(--panel-shadow),
+    inset calc(var(--pixel) * -1) calc(var(--pixel) * -1) 0 0 var(--panel-border),
+    0 0 0 var(--pixel) var(--c-gold);
+}
+.pg-panel {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0 12px;
+}
+
+/* ---- Snake ---- */
+.snake {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.snake-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 26px);
+  grid-template-rows: repeat(10, 26px);
+  gap: 2px;
+  padding: 6px;
+  background: var(--c-stone-dk);
+  box-shadow: 0 0 0 var(--pixel) var(--c-stone-lt), 0 0 0 calc(var(--pixel) * 2) var(--c-stone-dk);
+  touch-action: none;
+}
+.snake-cell {
+  background: #20202c;
+}
+.snake-cell.on {
+  background: var(--c-green);
+  box-shadow: inset 2px 2px 0 #4fd07f, inset -2px -2px 0 #014421;
+}
+.snake-cell.food {
+  background: var(--c-gold);
+  box-shadow: inset 2px 2px 0 #ffe08a, inset -2px -2px 0 var(--c-gold-dk);
+}
+.snake-score {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--c-gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.snake-score.lost {
+  color: var(--c-pink);
+}
+.snake-again {
+  font-size: 10px;
+}
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 52px);
+  grid-template-rows: repeat(3, 52px);
+  gap: 6px;
+}
+.dpad button {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dpad .up { grid-area: 1 / 2; }
+.dpad .left { grid-area: 2 / 1; }
+.dpad .right { grid-area: 2 / 3; }
+.dpad .down { grid-area: 3 / 2; }
+@media (min-width: 821px) {
+  .dpad { display: none; } /* keyboard on desktop */
+}
+
+/* ---- Clock ---- */
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 32px;
+  background: var(--c-stone-dk);
+  box-shadow: 0 0 0 var(--pixel) var(--c-stone-lt);
+}
+.clock-time {
+  font-family: var(--font-ui);
+  font-size: clamp(20px, 6vw, 42px);
+  color: var(--c-green);
+  text-shadow: 0 0 10px rgba(47, 125, 79, 0.6);
+  letter-spacing: 2px;
+}
+.clock-date {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--c-gold);
+}
+
+/* ---- Draw board ---- */
+.draw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.draw canvas {
+  background: #201b2a;
+  box-shadow: 0 0 0 var(--pixel) var(--c-stone-lt), 0 0 0 calc(var(--pixel) * 2) var(--c-stone-dk);
+  cursor: crosshair;
+  image-rendering: pixelated;
+  touch-action: none;
+}
+.draw-tools {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.swatch {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.3), inset -2px -2px 0 rgba(0, 0, 0, 0.45);
+}
+.swatch.active {
+  outline: var(--pixel) solid var(--c-gold);
+  outline-offset: 2px;
+}
+
+/* ---- Lofi radio ---- */
+.lofi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.cassette {
+  width: 220px;
+  height: 132px;
+  background: var(--c-stone);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  box-shadow:
+    inset var(--pixel) var(--pixel) 0 var(--c-stone-lt),
+    inset calc(var(--pixel) * -1) calc(var(--pixel) * -1) 0 var(--c-stone-dk),
+    0 0 0 var(--pixel) var(--c-stone-dk);
+}
+.reel {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #201b2a;
+  box-shadow: inset 0 0 0 4px var(--c-gold), inset 0 0 0 11px #201b2a;
+  position: relative;
+}
+.reel::before,
+.reel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: var(--c-gold);
+}
+.reel::before { width: 4px; height: 36px; }
+.reel::after { width: 36px; height: 4px; }
+.cassette.spin .reel { animation: reel-spin 0.9s linear infinite; }
+@keyframes reel-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .cassette.spin .reel { animation: none; }
+}
+.lofi-hint {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--c-gold);
+  opacity: 0.75;
+}
+
+/* ---- Accordion + YouTube ---- */
+.acc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 640px;
+}
+.acc-head {
+  width: 100%;
+  font-size: 11px;
+}
+.acc-body {
+  padding: 12px 0;
+}
+.yt-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: 0 0 0 var(--pixel) var(--c-gold), 0 0 0 calc(var(--pixel) * 2) var(--c-stone-dk);
+}
+.yt-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.yt-poster {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-align: center;
+}

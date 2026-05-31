@@ -1,0 +1,72 @@
+---
+import "@fontsource/press-start-2p";
+import "@fontsource/vt323";
+import "../styles/global.css";
+import "../styles/transitions.css";
+import { ClientRouter } from "astro:transitions";
+import MenuPanel from "../components/astro/MenuPanel.astro";
+import SoundController from "../components/react/SoundController.tsx";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Vuong Vu — Frontend Engineer",
+  description = "Vuong Vu — Frontend Engineer based in Berlin. Pixel-art portfolio.",
+} = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <ClientRouter fallback="animate" />
+  </head>
+  <body>
+    <div class="shell">
+      <MenuPanel pathname={pathname} />
+      <slot />
+    </div>
+
+    <div class="corner">
+      <SoundController client:idle transition:persist />
+    </div>
+
+    <style is:global>
+      .shell {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 28px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px;
+        min-height: 100vh;
+        align-items: start;
+      }
+      .corner {
+        position: fixed;
+        top: 12px;
+        right: 14px;
+        z-index: 50;
+      }
+      .sound-toggle {
+        font-size: 11px;
+        padding: 8px 10px;
+      }
+      @media (max-width: 820px) {
+        .shell {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 16px;
+        }
+      }
+    </style>
+  </body>
+</html>

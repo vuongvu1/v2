@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainContent from "../components/astro/MainContent.astro";
+import { bio, PRO_START_YEAR, REACT_START_YEAR } from "../data/bio";
+
+const year = new Date().getFullYear();
+const pro = year - PRO_START_YEAR;
+const reactYears = year - REACT_START_YEAR;
+const fill = (s: string) =>
+  s.replace("{pro}", String(pro)).replace("{react}", String(reactYears));
+---
+
+<BaseLayout title="Vuong Vu — About">
+  <MainContent title="About" flavor="The Hero">
+    <div class="pixel-parchment about">
+      <p class="lead">
+        <span class="prompt">&gt;</span> Hello, this is <strong>{bio.name}</strong
+        ><span class="pixel-cursor"></span>
+      </p>
+      {bio.paragraphs.map((p) => <p>{fill(p)}</p>)}
+      <p class="links">
+        <a href={bio.stackOverflow} target="_blank" rel="noreferrer" data-sfx="click"
+          >&rarr; StackOverflow profile</a
+        >
+      </p>
+    </div>
+  </MainContent>
+</BaseLayout>
+
+<style>
+  .about {
+    max-width: 70ch;
+  }
+  .lead {
+    font-size: 24px;
+    color: var(--c-green-dk);
+  }
+  .prompt {
+    color: var(--c-pink);
+  }
+  .about p {
+    font-size: 20px;
+  }
+  .about .links {
+    margin-top: 18px;
+  }
+</style>

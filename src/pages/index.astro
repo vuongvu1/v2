@@ -1,13 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 import MainContent from "../components/astro/MainContent.astro";
 import { bio, PRO_START_YEAR, REACT_START_YEAR } from "../data/bio";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const year = new Date().getFullYear();
 const pro = year - PRO_START_YEAR;
 const reactYears = year - REACT_START_YEAR;
-const fill = (s: string) =>
-  s.replace("{pro}", String(pro)).replace("{react}", String(reactYears));
+const fill = (s: string) => s.replace("{pro}", String(pro)).replace("{react}", String(reactYears));
 ---
 
 <BaseLayout title="Vuong Vu — About">

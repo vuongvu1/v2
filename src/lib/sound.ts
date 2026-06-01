@@ -61,7 +61,9 @@ class SoundManager {
 
   private ensureCtx(): AudioContext | null {
     if (typeof window === "undefined") return null;
-    const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const AC =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     if (!AC) return null;
     if (!this.ctx) this.ctx = new AC();
     if (this.ctx.state === "suspended") void this.ctx.resume();
@@ -132,5 +134,6 @@ declare global {
 
 export function getSound(): SoundManager | null {
   if (typeof window === "undefined") return null;
-  return (window.__pfSound ??= new SoundManager());
+  if (!window.__pfSound) window.__pfSound = new SoundManager();
+  return window.__pfSound;
 }

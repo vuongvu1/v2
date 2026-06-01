@@ -1,4 +1,4 @@
-import { useRef, useState, type PointerEvent } from "react";
+import { type PointerEvent, useRef, useState } from "react";
 
 const SIZE = 320;
 const CELL = 8; // snap brush to an 8px pixel grid

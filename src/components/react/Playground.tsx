@@ -1,8 +1,8 @@
-import PixelTabs from "./PixelTabs";
-import SnakeGame from "./SnakeGame";
 import DigitalClock from "./DigitalClock";
 import DrawBoard from "./DrawBoard";
 import LofiRadio from "./LofiRadio";
+import PixelTabs from "./PixelTabs";
+import SnakeGame from "./SnakeGame";
 
 export default function Playground() {
   return (

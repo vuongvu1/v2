@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function LofiRadio() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     const a = audioRef.current;
     if (!a) return;
     if (a.paused) {
@@ -14,7 +14,7 @@ export default function LofiRadio() {
       a.pause();
       setPlaying(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = 0.5;
@@ -35,7 +35,7 @@ export default function LofiRadio() {
       stop();
       document.removeEventListener("astro:before-swap", stop);
     };
-  }, []);
+  }, [toggle]);
 
   return (
     <div className="lofi">
@@ -47,6 +47,7 @@ export default function LofiRadio() {
         {playing ? "❚❚ Pause" : "► Play"}
       </button>
       <p className="lofi-hint">Press SPACE to play / pause</p>
+      {/* biome-ignore lint/a11y/useMediaCaption: instrumental lofi loop, no spoken content to caption */}
       <audio ref={audioRef} loop src="/audio/lofi.mp3" preload="none" />
     </div>
   );

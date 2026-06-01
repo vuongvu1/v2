@@ -8,8 +8,7 @@ interface Props {
 }
 const { pathname } = Astro.props;
 
-const isActive = (href: string) =>
-  href === "/" ? pathname === "/" : pathname.startsWith(href);
+const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 ---
 
 <nav

@@ -8,34 +8,75 @@
 
 /* ---- MENU (vertical) ---- */
 @keyframes wc3-bounce-out-up {
-  20%      { transform: translate3d(0, -12px, 0); }
-  40%, 45% { opacity: 1; transform: translate3d(0, 24px, 0); }
-  100%     { opacity: 0; transform: translate3d(0, -1200px, 0); }
+  20% {
+    transform: translate3d(0, -12px, 0);
+  }
+  40%,
+  45% {
+    opacity: 1;
+    transform: translate3d(0, 24px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -1200px, 0);
+  }
 }
 @keyframes wc3-bounce-in-down {
-  0%   { opacity: 0; transform: translate3d(0, -1200px, 0); }
-  60%  { opacity: 1; transform: translate3d(0, 26px, 0); }
-  75%  { transform: translate3d(0, -12px, 0); }
-  90%  { transform: translate3d(0, 6px, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -1200px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 26px, 0);
+  }
+  75% {
+    transform: translate3d(0, -12px, 0);
+  }
+  90% {
+    transform: translate3d(0, 6px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* ---- CONTENT (horizontal) ---- */
 @keyframes wc3-bounce-out-right {
-  20%  { opacity: 1; transform: translate3d(-24px, 0, 0); }
-  100% { opacity: 0; transform: translate3d(1600px, 0, 0); }
+  20% {
+    opacity: 1;
+    transform: translate3d(-24px, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(1600px, 0, 0);
+  }
 }
 @keyframes wc3-bounce-in-right {
-  0%   { opacity: 0; transform: translate3d(1600px, 0, 0); }
-  60%  { opacity: 1; transform: translate3d(-26px, 0, 0); }
-  75%  { transform: translate3d(12px, 0, 0); }
-  90%  { transform: translate3d(-6px, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+  0% {
+    opacity: 0;
+    transform: translate3d(1600px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-26px, 0, 0);
+  }
+  75% {
+    transform: translate3d(12px, 0, 0);
+  }
+  90% {
+    transform: translate3d(-6px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* Keep the persistent root cross-fade from washing the dark background. */
 ::view-transition-old(root),
-::view-transition-new(root) { animation: none; }
+::view-transition-new(root) {
+  animation: none;
+}
 
 /* Respect reduced-motion: drop the bounce, fall back to a quick fade. */
 @media (prefers-reduced-motion: reduce) {

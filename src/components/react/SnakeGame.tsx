@@ -141,10 +141,38 @@ export default function SnakeGame() {
         )}
       </div>
       <div className="dpad">
-        <button type="button" className="pixel-btn up" aria-label="Up" onClick={() => changeDir(Dir.UP)}>▲</button>
-        <button type="button" className="pixel-btn left" aria-label="Left" onClick={() => changeDir(Dir.LEFT)}>◀</button>
-        <button type="button" className="pixel-btn right" aria-label="Right" onClick={() => changeDir(Dir.RIGHT)}>▶</button>
-        <button type="button" className="pixel-btn down" aria-label="Down" onClick={() => changeDir(Dir.DOWN)}>▼</button>
+        <button
+          type="button"
+          className="pixel-btn up"
+          aria-label="Up"
+          onClick={() => changeDir(Dir.UP)}
+        >
+          ▲
+        </button>
+        <button
+          type="button"
+          className="pixel-btn left"
+          aria-label="Left"
+          onClick={() => changeDir(Dir.LEFT)}
+        >
+          ◀
+        </button>
+        <button
+          type="button"
+          className="pixel-btn right"
+          aria-label="Right"
+          onClick={() => changeDir(Dir.RIGHT)}
+        >
+          ▶
+        </button>
+        <button
+          type="button"
+          className="pixel-btn down"
+          aria-label="Down"
+          onClick={() => changeDir(Dir.DOWN)}
+        >
+          ▼
+        </button>
       </div>
     </div>
   );

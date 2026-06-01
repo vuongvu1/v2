@@ -5,40 +5,40 @@
 
 :root {
   /* --- Raw palette (WC3 stone & parchment + v1 green/pink accents) --- */
-  --c-bg:           #1a1420;
-  --c-bg-2:         #241c2e;
-  --c-stone:        #3b3a4a;
-  --c-stone-lt:     #57566b;
-  --c-stone-dk:     #24232f;
-  --c-parchment:    #e8d8b0;
+  --c-bg: #1a1420;
+  --c-bg-2: #241c2e;
+  --c-stone: #3b3a4a;
+  --c-stone-lt: #57566b;
+  --c-stone-dk: #24232f;
+  --c-parchment: #e8d8b0;
   --c-parchment-dk: #c9b787;
-  --c-ink:          #2a2118;
-  --c-ink-soft:     #5a4d3a;
-  --c-paper:        #f4ecd8;
-  --c-gold:         #f2c14e;
-  --c-gold-dk:      #b8860b;
-  --c-green:        #2f7d4f;
-  --c-green-dk:     #014421; /* nod to v1 */
-  --c-pink:         #f64c72; /* nod to v1 */
-  --c-blue:         #4a90d9;
-  --c-red:          #c0392b;
+  --c-ink: #2a2118;
+  --c-ink-soft: #5a4d3a;
+  --c-paper: #f4ecd8;
+  --c-gold: #f2c14e;
+  --c-gold-dk: #b8860b;
+  --c-green: #2f7d4f;
+  --c-green-dk: #014421; /* nod to v1 */
+  --c-pink: #f64c72; /* nod to v1 */
+  --c-blue: #4a90d9;
+  --c-red: #c0392b;
 
   /* --- Semantic aliases --- */
-  --bg:             var(--c-bg);
-  --panel-fill:     var(--c-stone);
-  --panel-border:   var(--c-stone-lt);
-  --panel-shadow:   var(--c-stone-dk);
-  --content-fill:   var(--c-parchment);
-  --text:           var(--c-ink);
-  --text-muted:     var(--c-ink-soft);
-  --text-on-stone:  var(--c-paper);
-  --heading:        var(--c-gold);
-  --link:           var(--c-pink);
-  --link-hover:     var(--c-gold);
-  --focus-ring:     var(--c-gold);
-  --status-live:    var(--c-green);
-  --status-npm:     var(--c-pink);
-  --status-github:  var(--c-blue);
+  --bg: var(--c-bg);
+  --panel-fill: var(--c-stone);
+  --panel-border: var(--c-stone-lt);
+  --panel-shadow: var(--c-stone-dk);
+  --content-fill: var(--c-parchment);
+  --text: var(--c-ink);
+  --text-muted: var(--c-ink-soft);
+  --text-on-stone: var(--c-paper);
+  --heading: var(--c-gold);
+  --link: var(--c-pink);
+  --link-hover: var(--c-gold);
+  --focus-ring: var(--c-gold);
+  --status-live: var(--c-green);
+  --status-npm: var(--c-pink);
+  --status-github: var(--c-blue);
   --status-private: var(--c-stone-lt);
 
   /* --- Metrics --- */
@@ -47,17 +47,23 @@
   --font-body: "VT323", "Press Start 2P", monospace;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body { margin: 0; padding: 0; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 html {
   background: var(--bg);
   /* faint pixel grid + vignette for that game-screen feel */
   background-image:
     radial-gradient(120% 120% at 50% 0%, transparent 55%, rgba(0, 0, 0, 0.55) 100%),
-    repeating-linear-gradient(0deg,  rgba(255,255,255,0.018) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 4px);
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 4px);
   background-attachment: fixed;
 }
 
@@ -67,34 +73,55 @@ body {
   line-height: 1.4;
   color: var(--text-on-stone);
   -webkit-font-smoothing: none;
-  font-smooth: never;
   text-rendering: optimizeSpeed;
   min-height: 100vh;
 }
 
 /* Headings & UI chrome use the chunky display face */
-h1, h2, h3, .pixel-ui {
+h1,
+h2,
+h3,
+.pixel-ui {
   font-family: var(--font-ui);
   line-height: 1.6;
   margin: 0 0 0.8em;
   color: var(--heading);
   text-shadow: var(--pixel) var(--pixel) 0 rgba(0, 0, 0, 0.5);
 }
-h1 { font-size: clamp(18px, 3.2vw, 28px); }
-h2 { font-size: clamp(14px, 2.2vw, 18px); }
-h3 { font-size: 13px; }
+h1 {
+  font-size: clamp(18px, 3.2vw, 28px);
+}
+h2 {
+  font-size: clamp(14px, 2.2vw, 18px);
+}
+h3 {
+  font-size: 13px;
+}
 
-p { margin: 0 0 1rem; max-width: 62ch; }
+p {
+  margin: 0 0 1rem;
+  max-width: 62ch;
+}
 
-a { color: var(--link); text-decoration: none; }
-a:hover { color: var(--link-hover); text-decoration: underline; }
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
 a:focus-visible,
 button:focus-visible {
   outline: var(--pixel) solid var(--focus-ring);
   outline-offset: var(--pixel);
 }
 
-img.sprite, .pixel-art, img[src$=".svg"] { image-rendering: pixelated; }
+img.sprite,
+.pixel-art,
+img[src$=".svg"] {
+  image-rendering: pixelated;
+}
 
 /* =========================================================================
    Pixel UI primitives — stair-step bevels via layered hard box-shadows
@@ -120,8 +147,13 @@ img.sprite, .pixel-art, img[src$=".svg"] { image-rendering: pixelated; }
     0 0 0 var(--pixel) var(--c-parchment-dk),
     0 0 0 calc(var(--pixel) * 2) var(--c-stone-dk);
 }
-.pixel-parchment a { color: var(--c-green-dk); font-weight: bold; }
-.pixel-parchment a:hover { color: var(--c-pink); }
+.pixel-parchment a {
+  color: var(--c-green-dk);
+  font-weight: bold;
+}
+.pixel-parchment a:hover {
+  color: var(--c-pink);
+}
 
 /* (c) Pixel button / menu item */
 .pixel-btn {
@@ -138,9 +170,14 @@ img.sprite, .pixel-art, img[src$=".svg"] { image-rendering: pixelated; }
     inset var(--pixel) var(--pixel) 0 0 var(--panel-border),
     inset calc(var(--pixel) * -1) calc(var(--pixel) * -1) 0 0 var(--panel-shadow),
     0 0 0 var(--pixel) var(--c-stone-dk);
-  transition: transform 80ms steps(2), color 80ms steps(2);
+  transition:
+    transform 80ms steps(2),
+    color 80ms steps(2);
 }
-.pixel-btn:hover { color: var(--heading); transform: translate(2px, 0); }
+.pixel-btn:hover {
+  color: var(--heading);
+  transform: translate(2px, 0);
+}
 .pixel-btn:active {
   box-shadow:
     inset calc(var(--pixel) * -1) calc(var(--pixel) * -1) 0 0 var(--panel-border),
@@ -157,8 +194,13 @@ img.sprite, .pixel-art, img[src$=".svg"] { image-rendering: pixelated; }
     0 0 0 var(--pixel) var(--c-parchment-dk),
     6px 6px 0 0 var(--c-stone-dk);
 }
-.pixel-card a { color: var(--c-green-dk); font-weight: bold; }
-.pixel-card a:hover { color: var(--c-pink); }
+.pixel-card a {
+  color: var(--c-green-dk);
+  font-weight: bold;
+}
+.pixel-card a:hover {
+  color: var(--c-pink);
+}
 
 /* (e) Pixel tag (skills / stack / status) */
 .pixel-tag {
@@ -172,10 +214,22 @@ img.sprite, .pixel-art, img[src$=".svg"] { image-rendering: pixelated; }
     inset 2px 2px 0 var(--panel-border),
     inset -2px -2px 0 var(--panel-shadow);
 }
-.pixel-tag--live    { background: var(--status-live);    color: #fff; }
-.pixel-tag--npm     { background: var(--status-npm);     color: #fff; }
-.pixel-tag--github  { background: var(--status-github);  color: #fff; }
-.pixel-tag--private { background: var(--status-private); color: var(--c-paper); }
+.pixel-tag--live {
+  background: var(--status-live);
+  color: #fff;
+}
+.pixel-tag--npm {
+  background: var(--status-npm);
+  color: #fff;
+}
+.pixel-tag--github {
+  background: var(--status-github);
+  color: #fff;
+}
+.pixel-tag--private {
+  background: var(--status-private);
+  color: var(--c-paper);
+}
 
 /* (f) Pixel divider */
 .pixel-divider {
@@ -186,12 +240,22 @@ img.sprite, .pixel-art, img[src$=".svg"] { image-rendering: pixelated; }
 }
 
 /* (g) Pixel scrollbar */
-.pixel-scroll { scrollbar-width: thin; scrollbar-color: var(--c-gold) var(--c-stone-dk); }
-.pixel-scroll::-webkit-scrollbar { width: 14px; height: 14px; }
-.pixel-scroll::-webkit-scrollbar-track { background: var(--c-stone-dk); }
+.pixel-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-gold) var(--c-stone-dk);
+}
+.pixel-scroll::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+.pixel-scroll::-webkit-scrollbar-track {
+  background: var(--c-stone-dk);
+}
 .pixel-scroll::-webkit-scrollbar-thumb {
   background: var(--c-gold);
-  box-shadow: inset 2px 2px 0 var(--c-gold-dk), inset -2px -2px 0 var(--c-gold-dk);
+  box-shadow:
+    inset 2px 2px 0 var(--c-gold-dk),
+    inset -2px -2px 0 var(--c-gold-dk);
 }
 
 /* (h) Blinking cursor */
@@ -201,11 +265,27 @@ img.sprite, .pixel-art, img[src$=".svg"] { image-rendering: pixelated; }
   margin-left: 2px;
   animation: pixel-blink 1s steps(1) infinite;
 }
-@keyframes pixel-blink { 50% { opacity: 0; } }
+@keyframes pixel-blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 /* Utility */
-.flavor { font-family: var(--font-body); font-size: 16px; color: var(--c-gold); opacity: 0.8; }
+.flavor {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--c-gold);
+  opacity: 0.8;
+}
 .visually-hidden {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }

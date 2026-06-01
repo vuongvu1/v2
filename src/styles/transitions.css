@@ -1,40 +1,48 @@
 /* =========================================================================
    Warcraft-3-style page transition keyframes.
+   Verbatim Animate.css bounce definitions so the feel matches the v1 draft.
    Referenced by name from src/lib/transitions.ts via Astro's transition:animate.
+   The choreography (out, then in) is sequenced in transitions.ts via a delay.
    Menu panel  : exits up   (bounceOutUp)    / enters from top   (bounceInDown)
    Main content: exits right (bounceOutRight) / enters from right (bounceInRight)
-   Adapted from Animate.css bounce definitions so the feel matches the v1 draft.
    ========================================================================= */
 
 /* ---- MENU (vertical) ---- */
 @keyframes wc3-bounce-out-up {
   20% {
-    transform: translate3d(0, -12px, 0);
+    transform: translate3d(0, -10px, 0);
   }
   40%,
   45% {
     opacity: 1;
-    transform: translate3d(0, 24px, 0);
+    transform: translate3d(0, 20px, 0);
   }
   100% {
     opacity: 0;
-    transform: translate3d(0, -1200px, 0);
+    transform: translate3d(0, -2000px, 0);
   }
 }
 @keyframes wc3-bounce-in-down {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
   0% {
     opacity: 0;
-    transform: translate3d(0, -1200px, 0);
+    transform: translate3d(0, -3000px, 0);
   }
   60% {
     opacity: 1;
-    transform: translate3d(0, 26px, 0);
+    transform: translate3d(0, 25px, 0);
   }
   75% {
-    transform: translate3d(0, -12px, 0);
+    transform: translate3d(0, -10px, 0);
   }
   90% {
-    transform: translate3d(0, 6px, 0);
+    transform: translate3d(0, 5px, 0);
   }
   100% {
     transform: translate3d(0, 0, 0);
@@ -45,27 +53,34 @@
 @keyframes wc3-bounce-out-right {
   20% {
     opacity: 1;
-    transform: translate3d(-24px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
   }
   100% {
     opacity: 0;
-    transform: translate3d(1600px, 0, 0);
+    transform: translate3d(2000px, 0, 0);
   }
 }
 @keyframes wc3-bounce-in-right {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
   0% {
     opacity: 0;
-    transform: translate3d(1600px, 0, 0);
+    transform: translate3d(3000px, 0, 0);
   }
   60% {
     opacity: 1;
-    transform: translate3d(-26px, 0, 0);
+    transform: translate3d(-25px, 0, 0);
   }
   75% {
-    transform: translate3d(12px, 0, 0);
+    transform: translate3d(10px, 0, 0);
   }
   90% {
-    transform: translate3d(-6px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
   }
   100% {
     transform: translate3d(0, 0, 0);

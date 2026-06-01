@@ -4,22 +4,26 @@ import type { TransitionDirectionalAnimations } from "astro";
  * Warcraft-3-style page transition descriptors for Astro's `transition:animate`.
  * The `name` of each animation maps to a @keyframes block in styles/transitions.css.
  *
- * Forwards and backwards navigation use the same choreography on purpose — the
- * menu always launches up and slams back down; the content always flies out and
- * bounces in from the right.
+ * The draft (Next.js + Animate.css) plays this sequentially: panels fly OUT, then the
+ * new page bounces IN. We reproduce that with View Transitions by delaying the `new`
+ * (bounce-in) animation until the `old` (fly-out) has finished. `fillMode: "both"` keeps
+ * the incoming panel parked off-screen during the delay.
+ *
+ * Forwards and backwards navigation use the same choreography on purpose — the menu
+ * always launches up and slams back down; the content always flies out to the right and
+ * bounces back in from the right.
  */
-const DURATION = "0.55s";
-const EASE_OUT = "cubic-bezier(0.6, -0.28, 0.735, 0.045)"; // anticipate, then leave
-const EASE_IN = "cubic-bezier(0.175, 0.885, 0.32, 1.275)"; // overshoot landing
+const OUT = "0.5s"; // fly-out duration
+const IN = "0.9s"; // bounce-in duration (the dramatic part)
 
 const menuPair = {
-  old: { name: "wc3-bounce-out-up", duration: DURATION, easing: EASE_OUT, fillMode: "both" },
-  new: { name: "wc3-bounce-in-down", duration: DURATION, easing: EASE_IN, fillMode: "both" },
+  old: { name: "wc3-bounce-out-up", duration: OUT, fillMode: "both" },
+  new: { name: "wc3-bounce-in-down", duration: IN, delay: OUT, fillMode: "both" },
 };
 
 const contentPair = {
-  old: { name: "wc3-bounce-out-right", duration: DURATION, easing: EASE_OUT, fillMode: "both" },
-  new: { name: "wc3-bounce-in-right", duration: DURATION, easing: EASE_IN, fillMode: "both" },
+  old: { name: "wc3-bounce-out-right", duration: OUT, fillMode: "both" },
+  new: { name: "wc3-bounce-in-right", duration: IN, delay: OUT, fillMode: "both" },
 };
 
 export const menuBounce: TransitionDirectionalAnimations = {

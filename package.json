@@ -2,7 +2,7 @@
   "name": "portfolio-v2",
   "type": "module",
   "version": "0.0.1",
-  "description": "Vuong Vu — portfolio v2. Astro + pixel-art + Warcraft-3-style page transitions.",
+  "description": "Vuong Vu — portfolio v2. Astro + pixel-art.",
   "engines": {
     "node": ">=22.12.0"
   },
